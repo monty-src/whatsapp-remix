@@ -12,10 +12,12 @@ import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import ChatIcon from "@mui/icons-material/Chat";
+import SearchIcon from "@mui/icons-material/Search";
 import { Avatar, Button, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVertRounded";
 
 import { auth } from "../firebase";
+import { useChats } from "../hooks/useChats";
 
 /**
  * Sidebar component
@@ -25,13 +27,20 @@ import { auth } from "../firebase";
  * @returns {JSX.Element}
  */
 const Sidebar = (): JSX.Element => {
-  const [user] = useAuthState(auth);
-  const signUserOut = () => signOut(auth);
+  const { user, chatsSnapshot, createChat } = useChats();
+
+  const handleSignOut = () => signOut(auth);
+  const handleCreate = () => {
+    const input = prompt(
+      "Please enter an email address for the user you with to chat with"
+    );
+    if (input) createChat(input);
+  };
 
   return (
     <Container>
       <Header>
-        <UserAvatar src={user?.photoURL as string} onClick={signUserOut} />
+        <UserAvatar src={user?.photoURL as string} onClick={handleSignOut} />
         <IconsContainer>
           <IconButton>
             <ChatIcon />
@@ -41,6 +50,11 @@ const Sidebar = (): JSX.Element => {
           </IconButton>
         </IconsContainer>
       </Header>
+      <Search>
+        <SearchIcon />
+        <SearchInput placeholder="Search in chats" />
+      </Search>
+      <SidebarButton onClick={handleCreate}>Start a new chat</SidebarButton>
     </Container>
   );
 };
@@ -74,6 +88,30 @@ const UserAvatar = styled(Avatar)`
   :hover {
     opacity: 0.8;
   }
+`;
+
+const Search = styled.div`
+  display: flex;
+  align-items: center;
+
+  padding: 5px;
+  border-radius: 2px;
+`;
+
+const SidebarButton = styled(Button)`
+  width: 100%;
+
+  &&& {
+    border-top: 1px solid #f5f5f5;
+    border-bottom: 1px solid #f5f5f5;
+  }
+`;
+
+const SearchInput = styled.input`
+  flex: 1;
+
+  border: none;
+  outline-width: 0;
 `;
 
 /** exporting */

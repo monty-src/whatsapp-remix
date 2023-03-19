@@ -13,9 +13,9 @@ import { db } from "../firebase";
  * @function useFirebaseUserProfile
  *
  *
- * @returns {}
+ * @returns {void}
  */
-export const useFirebaseUserProfile = (user: User) => {
+export const useFirebaseUserProfile = (user: User): void => {
   /**
    * @function updateUserProfile
    *
