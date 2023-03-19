@@ -19,6 +19,8 @@ import MoreVertIcon from "@mui/icons-material/MoreVertRounded";
 import { auth } from "../firebase";
 import { useChats } from "../hooks/useChats";
 
+import Chat from "./Chat";
+
 /**
  * Sidebar component
  *
@@ -70,6 +72,13 @@ const Sidebar = (): JSX.Element => {
         <SearchInput placeholder="Search in chats" />
       </Search>
       <SidebarButton onClick={handleCreate}>Start a new chat</SidebarButton>
+      {chatsSnapshot?.docs.map((chat) => {
+        console.log('chat: ', chat);
+        console.log('chat: ', chat.data());
+        return (
+          <Chat key={chat.id} id={chat.id} users={chat.data().users} />
+        )
+      })}
     </Container>
   );
 };
