@@ -1,10 +1,23 @@
+/**
+ * @module components/Sidebar
+ *
+ *
+ * @author montier.elliott@gmail.com
+ */
 import Image from "next/image";
 import styled from "styled-components";
 import { PropagateLoader } from "react-spinners";
 
 import Logo from "../public/logo.png";
 
-const Loading = () => {
+/**
+ * Loading
+ * 
+ * 
+ * @component
+ * @returns {JSX.Element}
+ */
+const Loading = (): JSX.Element => {
   return (
     <center style={{ display: "grid", placeItems: "center", height: "100vh" }}>
       <LoaderContainer>
@@ -26,4 +39,5 @@ const Loader = styled(PropagateLoader)`
   margin-top: 30px;
 `;
 
+/** exporting */
 export default Loading;
