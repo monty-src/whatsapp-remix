@@ -1,5 +1,5 @@
 /**
- * @module utils/userChat
+ * @module utils/useFetchRecipients
  *
  *
  * @author montier.elliott@gmail.com
@@ -18,14 +18,14 @@ import getRecipientEmail from "../utils/getRecipientEmail";
 import type { ChatDetails, ChatRecipients } from "../types/chat";
 
 /**
- * Hook Use Chat
+ * Use Fetch Recipients
  *
  *
  * @function
  * @param {ChatDetails}
  * @returns {ChatRecipients}
  */
-export const useChat = ({ id, users }: ChatDetails): ChatRecipients => {
+export const useFetchRecipients = ({ id, users }: ChatDetails): ChatRecipients => {
   const router = useRouter();
   const [user] = useAuthState(auth);
 

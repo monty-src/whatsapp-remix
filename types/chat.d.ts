@@ -28,6 +28,7 @@ export type User = User | null | undefined;
  */
 export interface IChat {
   id: string;
+  users?: string[];
 }
 
 /**
@@ -90,4 +91,5 @@ export interface IMessage {
 export interface ChatMessagesResponse {
   chat: IChat | null;
   messages: Message[];
+  recipientEmail: string;
 }

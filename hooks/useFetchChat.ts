@@ -1,5 +1,5 @@
 /**
- * @module hooks/useMessages
+ * @module hooks/useFetchChat
  *
  *
  * @author montier.elliott@gmail.com
@@ -13,20 +13,25 @@ import {
   collection,
   getDocs,
 } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import { IChat, IMessage, ChatMessagesResponse } from "../types/chat";
 
+import getRecipientEmail from "../utils/getRecipientEmail";
+
 /**
- * Use Messages
+ * Use Fetch Chat
  *
  *
  * @function
  * @param {string} chatId
  * @returns {ChatMessagesResponse}
  */
-export const useMessages = (chatId: string): ChatMessagesResponse => {
+export const useFetchChat = (chatId: string): ChatMessagesResponse => {
+  const [user] = useAuthState(auth);
   const [chat, setChat] = useState<IChat | null>(null);
+  const [recipientEmail, setRecipientEmail] = useState<string>("");
   const [messages, setMessages] = useState<IMessage[]>([]);
   const chatsRef = doc(db, `chats/${chatId}`);
   const messagesCollection = collection(db, `chats/${chatId}/messages`);
@@ -41,17 +46,18 @@ export const useMessages = (chatId: string): ChatMessagesResponse => {
       const messagesResponse = await getDocs(queryMessagesCollection);
       const mappedMessages = messagesResponse.docs.map((doc) => ({
         id: doc.id,
-        ...(doc.data() as Omit<IMessage, "id" | "timestamp">),
+        ...doc.data(),
         timestamp: doc.data().timestamp.toDate().getTime(),
       }));
       setChat({
         id: chatResponse.id,
-        ...(chatResponse.data() as Omit<IChat, "id">),
+        ...chatResponse.data(),
       });
       setMessages(mappedMessages);
+      setRecipientEmail(getRecipientEmail(chat?.users!, user));
     };
     fetchData();
   }, [chatId]);
 
-  return { chat, messages };
+  return { chat, messages, recipientEmail };
 };

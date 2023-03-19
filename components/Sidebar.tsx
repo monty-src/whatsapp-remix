@@ -15,7 +15,7 @@ import { Avatar, Button, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVertRounded";
 
 import { auth } from "../firebase";
-import { useChats } from "../hooks/useChats";
+import { useFetchUserChats } from "../hooks/useFetchUserChats";
 
 import Chat from "./Chat";
 
@@ -27,7 +27,7 @@ import Chat from "./Chat";
  * @returns {JSX.Element}
  */
 const Sidebar = (): JSX.Element => {
-  const { user, chatsSnapshot, createChat } = useChats();
+  const { user, chatsSnapshot, createChat } = useFetchUserChats();
 
   /**
    * Handle Sign out

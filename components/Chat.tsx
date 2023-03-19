@@ -7,7 +7,7 @@
 import styled from "styled-components";
 import { Avatar } from "@mui/material";
 
-import { useChat } from "../hooks/useChat";
+import { useFetchRecipients } from "../hooks/useFetchRecipients";
 import type { ChatDetails } from "../types/chat";
 
 /**
@@ -19,7 +19,7 @@ import type { ChatDetails } from "../types/chat";
  * @returns {JSX.Element}
  */
 const Chat = ({ id, users }: ChatDetails): JSX.Element => {
-  const { recipientSnapshot, enterChat } = useChat({
+  const { recipientSnapshot, enterChat } = useFetchRecipients({
     id,
     users,
   });
