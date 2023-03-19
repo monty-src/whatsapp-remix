@@ -59,8 +59,9 @@ export const useChats = (): UseChats => {
    *
    * @function
    * @param {string} input
+   * @returns {void}
    */
-  const createChat = (input: string) => {
+  const createChat = (input: string): void => {
     if (
       !input ||
       !EmailValidator.validate(input) ||
@@ -78,6 +79,7 @@ export const useChats = (): UseChats => {
    * Chat already exist
    *
    *
+   * @function
    * @param recipientEmail
    * @returns {boolean}
    */
