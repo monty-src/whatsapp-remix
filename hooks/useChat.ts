@@ -46,6 +46,7 @@ export const useChat = ({ id, users }: ChatDetails): ChatRecipients => {
   /**
    * Enter Chat
    *
+   * 
    * @function
    * @returns {Promise<boolean>}
    */

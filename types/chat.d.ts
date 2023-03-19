@@ -20,6 +20,17 @@ import type {
 export type User = User | null | undefined;
 
 /**
+ * Chat
+ *
+ *
+ * @interface
+ * @typedef {Object} IChat
+ */
+export interface IChat {
+  id: string;
+}
+
+/**
  * Signed In User Chats, user information, and how to create a new chat
  *
  *
@@ -55,4 +66,28 @@ export interface ChatRecipients {
   recipientEmail: string | undefined;
   recipientSnapshot: QuerySnapshot<DocumentData> | undefined;
   enterChat: () => void;
+}
+
+/**
+ * IMessage
+ *
+ *
+ * @interface
+ * @typedef {IMessage}
+ */
+export interface IMessage {
+  id: string;
+  timestamp: number;
+}
+
+/**
+ * Chat Messages Response
+ * 
+ * 
+ * @interface
+ * @typedef {ChatMessagesResponse}
+ */
+export interface ChatMessagesResponse {
+  chat: IChat | null;
+  messages: Message[];
 }
