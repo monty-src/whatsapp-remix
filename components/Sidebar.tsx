@@ -7,9 +7,13 @@
 import React from "react";
 
 import styled from "styled-components";
+
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+
+import ChatIcon from "@mui/icons-material/Chat";
 import { Avatar, Button, IconButton } from "@mui/material";
+import MoreVertIcon from "@mui/icons-material/MoreVertRounded";
 
 import { auth } from "../firebase";
 
@@ -28,6 +32,14 @@ const Sidebar = (): JSX.Element => {
     <Container>
       <Header>
         <UserAvatar src={user?.photoURL as string} onClick={signUserOut} />
+        <IconsContainer>
+          <IconButton>
+            <ChatIcon />
+          </IconButton>
+          <IconButton>
+            <MoreVertIcon />
+          </IconButton>
+        </IconsContainer>
       </Header>
     </Container>
   );
@@ -39,6 +51,7 @@ const Sidebar = (): JSX.Element => {
  *
  */
 const Container = styled.div``;
+const IconsContainer = styled.div``;
 
 const Header = styled.div`
   top: 0;
