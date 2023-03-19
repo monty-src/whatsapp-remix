@@ -11,5 +11,15 @@
 ## Overview
 
 ## Technologies
+
+### Typescript
+
+### Firebase
+
+### @mui/material
+
+### Styled Components
+
 ## Setup
+
 ## NPM Build
