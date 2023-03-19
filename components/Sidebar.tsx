@@ -29,8 +29,23 @@ import { useChats } from "../hooks/useChats";
 const Sidebar = (): JSX.Element => {
   const { user, chatsSnapshot, createChat } = useChats();
 
-  const handleSignOut = () => signOut(auth);
-  const handleCreate = () => {
+  /**
+   * Handle Sign out
+   *
+   *
+   * @function
+   * @returns {Promise<void>}
+   */
+  const handleSignOut = (): Promise<void> => signOut(auth);
+
+  /**
+   * Handle Create
+   *
+   *
+   * @function
+   * @returns {void}
+   */
+  const handleCreate = (): void => {
     const input = prompt(
       "Please enter an email address for the user you with to chat with"
     );

@@ -35,10 +35,11 @@ interface UseChats {
 }
 
 /**
- * @function useChats
+ * Hook Use Chats
  *
  *
- * @returns {}
+ * @function
+ * @returns {UseChats}
  */
 export const useChats = (): UseChats => {
   const [user] = useAuthState(auth);
@@ -56,7 +57,8 @@ export const useChats = (): UseChats => {
    * Create Chat
    *
    *
-   * @param input
+   * @function
+   * @param {string} input
    */
   const createChat = (input: string) => {
     if (

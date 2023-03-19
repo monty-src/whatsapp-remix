@@ -10,16 +10,18 @@ import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 
 /**
- * @function useFirebaseUserProfile
+ * Hook Use Firebase User Profile
  *
- *
+ * 
+ * @function
  * @returns {void}
  */
 export const useFirebaseUserProfile = (user: User): void => {
   /**
-   * @function updateUserProfile
+   * Update User Profile
    *
    *
+   * @function
    * @param {User} user
    * @returns {Promise<void>}
    */
