@@ -8,20 +8,17 @@ import styled from "styled-components";
 import { Avatar } from "@mui/material";
 
 import { useChat } from "../hooks/useChat";
+import type { ChatDetails } from "../types/chat";
 
 /**
- * Props
+ * Chat
  *
  *
- * @interface
- * @typedef {Props}
+ * @component
+ * @param {Props} props
+ * @returns {JSX.Element}
  */
-interface Props {
-  id: string;
-  users: string[];
-}
-
-const Chat = ({ id, users }: Props) => {
+const Chat = ({ id, users }: ChatDetails): JSX.Element => {
   const { recipientSnapshot, enterChat } = useChat({
     id,
     users,

@@ -4,17 +4,6 @@ import { PropagateLoader } from "react-spinners";
 
 import Logo from "../public/logo.png";
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      center: React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-    }
-  }
-}
-
 const Loading = () => {
   return (
     <center style={{ display: "grid", placeItems: "center", height: "100vh" }}>

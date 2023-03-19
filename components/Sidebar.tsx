@@ -5,11 +5,9 @@
  * @author montier.elliott@gmail.com
  */
 import React from "react";
-
 import styled from "styled-components";
 
 import { signOut } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 import ChatIcon from "@mui/icons-material/Chat";
 import SearchIcon from "@mui/icons-material/Search";
@@ -57,7 +55,7 @@ const Sidebar = (): JSX.Element => {
   return (
     <Container>
       <Header>
-        <UserAvatar src={user?.photoURL as string} onClick={handleSignOut} />
+        <UserAvatar src={user?.photoURL!} onClick={handleSignOut} />
         <IconsContainer>
           <IconButton>
             <ChatIcon />
@@ -72,13 +70,9 @@ const Sidebar = (): JSX.Element => {
         <SearchInput placeholder="Search in chats" />
       </Search>
       <SidebarButton onClick={handleCreate}>Start a new chat</SidebarButton>
-      {chatsSnapshot?.docs.map((chat) => {
-        console.log('chat: ', chat);
-        console.log('chat: ', chat.data());
-        return (
-          <Chat key={chat.id} id={chat.id} users={chat.data().users} />
-        )
-      })}
+      {chatsSnapshot?.docs.map((chat) => (
+        <Chat key={chat.id} id={chat.id} users={chat.data().users} />
+      ))}
     </Container>
   );
 };

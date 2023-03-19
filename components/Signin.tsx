@@ -12,8 +12,8 @@ import Image from "next/image";
 import styled from "styled-components";
 import Button from "@mui/material/Button";
 
+import { signInWithPopup } from "firebase/auth";
 import type { UserCredential } from "firebase/auth";
-import { signInWithPopup, signOut } from "firebase/auth";
 
 import Logo from "../public/logo.png";
 import { auth, provider } from "../firebase";
@@ -28,7 +28,7 @@ import { auth, provider } from "../firebase";
 const SignIn = (): JSX.Element => {
   const signInGoogleAuth = (): Promise<UserCredential> =>
     signInWithPopup(auth, provider);
- 
+
   return (
     <Container>
       <Head>

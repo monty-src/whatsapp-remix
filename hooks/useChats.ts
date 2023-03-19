@@ -6,48 +6,26 @@
  */
 import EmailValidator from "email-validator";
 
-import type { User } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
-import {
-  collection,
-  query,
-  where,
-  addDoc,
-  QuerySnapshot,
-  DocumentData,
-} from "firebase/firestore";
-import type { Query, CollectionReference } from "firebase/firestore";
+
+import { collection, query, where, addDoc } from "firebase/firestore";
 
 import { auth, db } from "../firebase";
 
-/**
- * Chats Hooks interface
- *
- *
- * @interface
- * @typedef {Object} UserChats
- */
-interface UseChats {
-  user: User | null | undefined;
-  chatsSnapshot: QuerySnapshot<DocumentData> | undefined;
-  createChat: (input: string) => void;
-}
+import type { ChatSnapshots } from "../types/chat";
 
 /**
  * Hook Use Chats
  *
  *
  * @function
- * @returns {UseChats}
+ * @returns {ChatSnapshots}
  */
-export const useChats = (): UseChats => {
+export const useChats = (): ChatSnapshots => {
   const [user] = useAuthState(auth);
-  const chatsCollection: CollectionReference<DocumentData> = collection(
-    db,
-    "chats"
-  );
-  const userChatRef: Query<DocumentData> = query(
+  const chatsCollection = collection(db, "chats");
+  const userChatRef = query(
     chatsCollection,
     where("users", "array-contains", user?.email)
   );
