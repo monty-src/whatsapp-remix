@@ -28,7 +28,7 @@ import { auth, provider } from "../firebase";
 const SignIn = (): JSX.Element => {
   const signInGoogleAuth = (): Promise<UserCredential> =>
     signInWithPopup(auth, provider);
-
+ 
   return (
     <Container>
       <Head>

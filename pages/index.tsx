@@ -1,6 +1,18 @@
+/**
+ * @module pages/index
+ *
+ *
+ * @author montier.elliott@gmail.com
+ */
 import Head from "next/head";
 
-export default function Home() {
+/**
+ * Home Component
+ *
+ *
+ * @returns {JSX.Element}
+ */
+export default function Home(): JSX.Element {
   return (
     <>
       <Head>
