@@ -6,6 +6,8 @@
  */
 import Head from "next/head";
 
+import Sidebar from "../components/Sidebar";
+
 /**
  * Home Component
  *
@@ -22,7 +24,7 @@ export default function Home(): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <p>testing something right now</p>
+        <Sidebar />
       </main>
     </>
   );

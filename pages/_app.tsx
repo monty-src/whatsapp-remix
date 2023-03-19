@@ -7,7 +7,6 @@
 import type { AppProps } from "next/app";
 import React, { useEffect } from "react";
 
-import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import SignIn from "../components/Signin";
@@ -30,10 +29,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   useEffect(() => {
     if (user) useFirebaseUserProfile(user);
   }, [user]);
-
-  setTimeout(() => {
-    signOut(auth);
-  }, 5000);
 
   if (loading) return <Loading />;
   if (!user) return <SignIn />;
