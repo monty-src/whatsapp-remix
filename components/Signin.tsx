@@ -35,7 +35,7 @@ const SignIn = (): JSX.Element => {
         <title>Sign In</title>
       </Head>
       <SignInContainer>
-        <Image src={Logo} priority={true} width={200} height={200} alt="Logo" />
+        <Image priority={true} src={Logo} width={200} height={200} alt="Logo" />
         <SignInButton variant="outlined" onClick={signInGoogleAuth}>
           Sign in with GOOGLE
         </SignInButton>
@@ -58,10 +58,6 @@ const Container = styled.div`
   background-color: #f5f5f5;
 `;
 
-const SignInButton = styled(Button)`
-  margin-top: 50px;
-`;
-
 const SignInContainer = styled.div`
   padding: 100px;
 
@@ -70,10 +66,14 @@ const SignInContainer = styled.div`
 
   align-items: center;
 
+  row-gap: 30px;
+
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0px 4px 14px -3px rgba(0, 0, 0, 0.7);
 `;
+
+const SignInButton = styled(Button)``;
 
 /** exporting */
 export default SignIn;

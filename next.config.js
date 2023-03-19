@@ -21,6 +21,9 @@ const nextConfig = {
     storageBucket: process.env.WHATSAPP_REMIX_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.WHATSAPP_REMIX_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.WHATSAPP_REMIX_FIREBASE_APP_ID,
+  },
+  compiler: {
+    styledComponents: true
   }
 };
 
