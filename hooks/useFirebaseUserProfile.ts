@@ -20,18 +20,22 @@ export const useFirebaseUserProfile = (user: User) => {
    * @function updateUserProfile
    *
    *
+   * @param {User} user
+   * @returns {Promise<void>}
    */
   const updateUserProfile = async (user: User | null): Promise<void> => {
     if (!user) return;
-    await setDoc(
-      doc(db, "users", user.uid),
-      {
-        email: user.email,
-        lastSeen: serverTimestamp(),
-        photoURL: user.photoURL,
-      },
-      { merge: true }
-    );
+    try {
+      await setDoc(
+        doc(db, "users", user.uid),
+        {
+          email: user.email,
+          lastSeen: serverTimestamp(),
+          photoURL: user.photoURL,
+        },
+        { merge: true }
+      );
+    } catch (e) {}
   };
 
   /** invoking */
