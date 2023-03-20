@@ -4,8 +4,9 @@
  *
  * @author montier.elliott@gmail.com
  */
-import type { Recipient } from "./user";
+import type { MouseEvent, Dispatch, SetStateAction } from "react";
 import type { DocumentData, Timestamp } from "firebase/firestore";
+import type { Recipient, RecipientDocument, } from "./user";
 
 /**
  * Message
@@ -43,4 +44,11 @@ export interface MessageDocument extends DocumentData {
  * @interface
  * @typedef {Messages}
  */
-export interface Messages {}
+export interface Messages {
+  recipient: RecipientDocument;
+  recipientEmail: string | undefined;
+  messages: MessageDocument[];
+  input: string;
+  setInput: Dispatch<SetStateAction<string>>;
+  sendMessage: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
+}

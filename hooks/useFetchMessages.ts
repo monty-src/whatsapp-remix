@@ -14,8 +14,6 @@ import {
   orderBy,
   where,
   collection,
-  DocumentData,
-  QuerySnapshot,
   serverTimestamp,
 } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -24,37 +22,19 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { auth, db } from "../firebase";
 import getRecipientEmail from "../utils/getRecipientEmail";
 
+import type { Chat } from "../types/chat";
 import type { RecipientDocument } from "../types/user";
-import { MessageDocument } from "../types/messages";
-
-interface ChatData {
-  id: any;
-  users: any;
-}
-
-interface MessageData {
-  timestamp: any;
-  message: string;
-  user: string;
-  photoURL?: string;
-}
-
-interface ChatHook {
-  recipient: RecipientDocument;
-  recipientEmail: string | undefined;
-  messages: MessageDocument[];
-  input: string;
-  setInput: React.Dispatch<React.SetStateAction<string>>;
-  sendMessage: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
-}
+import type { Messages, MessageDocument } from "../types/messages";
 
 /**
+ * Use Fetch Messages
+ *
  *
  * @function
- * @param param0
- * @returns
+ * @param {Chat}
+ * @returns {Messages}
  */
-export const useFetchMessages = ({ id, users }: ChatData): ChatHook => {
+export const useFetchMessages = ({ users }: Chat): Messages => {
   const router = useRouter();
   const [user] = useAuthState(auth);
   const [input, setInput] = useState<string>("");
