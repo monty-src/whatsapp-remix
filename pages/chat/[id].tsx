@@ -12,6 +12,7 @@ import styled from "styled-components";
 import { useFetchChat } from "../../hooks/useFetchChat";
 
 import Sidebar from "../../components/Sidebar";
+import ChatScreen from "../../components/ChatScreen";
 
 /**
  * Chat
@@ -31,9 +32,11 @@ const Chat = (): JSX.Element => {
         <title>Chat with {recipientEmail}</title>
       </Head>
       <Sidebar />
-      <ChatContainer>
-        <p>testing</p>
-      </ChatContainer>
+      {chat.users.length === 2 && (
+        <ChatContainer>
+          <ChatScreen chat={chat} />
+        </ChatContainer>
+      )}
     </Container>
   );
 };

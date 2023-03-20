@@ -14,13 +14,17 @@ import {
   orderBy,
   where,
   collection,
+  DocumentData,
+  QuerySnapshot,
   serverTimestamp,
 } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 import { auth, db } from "../firebase";
-import getRecipientEmail from "..//utils/getRecipientEmail";
+import getRecipientEmail from "../utils/getRecipientEmail";
+
+import type { RecipientDocument } from "../types/user";
 
 interface ChatData {
   id: any;
@@ -35,7 +39,7 @@ interface MessageData {
 }
 
 interface ChatHook {
-  recipient: any;
+  recipient: RecipientDocument;
   recipientEmail: string | undefined;
   messages: any;
   input: string;
@@ -69,7 +73,7 @@ export const useFetchMessages = ({ id, users }: ChatData): ChatHook => {
   const [recipientSnapshot] = useCollection(queryUsersCollection);
   const [messagesSnapshot] = useCollection(queryMessagesCollection);
 
-  const recipient = recipientSnapshot?.docs?.[0]?.data();
+  const recipient = recipientSnapshot?.docs?.[0]?.data() as RecipientDocument;
   const recipientEmail = getRecipientEmail(users, user);
 
   const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {

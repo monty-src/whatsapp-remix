@@ -8,7 +8,9 @@ import styled from "styled-components";
 import { Avatar } from "@mui/material";
 
 import { useFetchRecipients } from "../hooks/useFetchRecipients";
+
 import type { Chat } from "../types/chat";
+import type { RecipientDocument } from "../types/user";
 
 /**
  * Chat Recipients
@@ -23,7 +25,7 @@ const ChatRecipients = ({ id, users }: Chat): JSX.Element => {
     id,
     users,
   });
-  const recipient = recipientSnapshot?.docs?.[0]?.data();
+  const recipient = recipientSnapshot?.docs?.[0]?.data() as RecipientDocument;
 
   return (
     <Container onClick={enterChat}>

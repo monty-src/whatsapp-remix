@@ -17,6 +17,23 @@ import type { DocumentData, QuerySnapshot } from "firebase/firestore";
 export type AppUser = User | null | undefined;
 
 /**
+ * Recipient Document
+ *
+ *
+ * @interface
+ * @extends {DocumentData}
+ * @typedef {RecipientDocument}
+ */
+export interface RecipientDocument extends DocumentData {
+  email: string;
+  photoURL: string;
+  lastSeen: {
+    seconds: number;
+    nanoseconds: number;
+  };
+}
+
+/**
  * Recipient
  *
  *

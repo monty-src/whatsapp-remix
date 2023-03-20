@@ -27,11 +27,4 @@ export interface Message {
  * @typedef {Messages}
  */
 export interface Messages {
-  messages: Message[];
-
-  user: User;
-  recipient: Recipient;
-
-  setInput: React.Dispatch<React.SetStateAction<string>>;
-  sendMessage: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
 }
