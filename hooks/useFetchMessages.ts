@@ -22,7 +22,6 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { auth, db } from "../firebase";
 import getRecipientEmail from "../utils/getRecipientEmail";
 
-import type { Chat } from "../types/chat";
 import type { RecipientDocument } from "../types/user";
 import type { Messages, MessageDocument } from "../types/messages";
 
@@ -31,10 +30,10 @@ import type { Messages, MessageDocument } from "../types/messages";
  *
  *
  * @function
- * @param {Chat}
+ * @param {{users: string[]}}
  * @returns {Messages}
  */
-export const useFetchMessages = ({ users }: Chat): Messages => {
+export const useFetchMessages = ({ users }: { users: string[] }): Messages => {
   const router = useRouter();
   const [user] = useAuthState(auth);
   const [input, setInput] = useState<string>("");

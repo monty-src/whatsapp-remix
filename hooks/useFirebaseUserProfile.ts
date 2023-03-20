@@ -10,7 +10,7 @@ import { db } from "../firebase";
 import type { AppUser } from "../types/user";
 
 /**
- * Hook Use Firebase User Profile
+ * Use Firebase User Profile
  *
  *
  * @function

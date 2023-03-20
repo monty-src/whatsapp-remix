@@ -36,11 +36,9 @@ interface Props {
  * @returns {JSX.Element}
  */
 const ChatScreen = ({ chat }: Props): JSX.Element => {
-  const router = useRouter();
   const { recipient, recipientEmail, messages, input, setInput, sendMessage } =
     useFetchMessages({
       users: chat.users,
-      id: router.query.id,
     });
 
   return (
