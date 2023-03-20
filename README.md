@@ -83,6 +83,20 @@ WHATSAPP_REMIX_FIREBASE_MESSAGING_SENDER_ID={WHATSAPP_REMIX_FIREBASE_MESSAGING_S
 WHATSAPP_REMIX_FIREBASE_APP_ID={WHATSAPP_REMIX_FIREBASE_APP_ID}
 ```
 
+### Create Database
+
+1. **Go to** https://firebase.google.com/
+2. **Click** Create database
+3. **Click** Start in production mode
+4. **Click** Next
+5. **Click** Cloud Firestore location
+6. **Click** Enable
+7. **Click** Start collection
+8. **Populate** users
+9. **Click** Next
+10. **Click** Auto-ID
+11. **Click** Save
+
 ### NPM Install
 
 ```js
