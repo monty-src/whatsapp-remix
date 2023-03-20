@@ -35,4 +35,22 @@ https://nextjs.org/
 
 ## Setup
 
+### Clone repository
+
+```js
+git clone https://github.com/monty-src/whatsapp-remix.git
+```
+
+### https://firebase.google.com/
+### Create .env.local
+### NPM Install
+
+```js
+npm i
+```
+
 ## NPM Build
+
+```js
+npm run dev
+```
