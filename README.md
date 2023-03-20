@@ -42,7 +42,47 @@ git clone https://github.com/monty-src/whatsapp-remix.git
 ```
 
 ### https://firebase.google.com/
+
+1. **Click** Create a project.
+2. **Enter project name** whatsapp-remix
+3. **Disable** Google Analytics for your Firebase project
+4. **Contine**
+5. **Click** Sidebar > Authentication > Sign-in method
+6. **Click** Google
+7. **Click** Enable
+8. **Populate** Project support email
+9. **Click** Project Overview > Gear > Project Settings
+10. **Click** </> under **Your apps**
+11. **App nickname** whatsapp-remix
+12. **Click** Register app
+
+Will produce the following artifact.
+
+```js
+const firebaseConfig = {
+  apiKey: "WHATSAPP_REMIX_FIREBASE_API_KEY",
+  authDomain: "WHATSAPP_REMIX_FIREBASE_AUTH_DOMAIN",
+  projectId: "WHATSAPP_REMIX_FIREBASE_PROJECT_ID",
+  storageBucket: "WHATSAPP_REMIX_FIREBASE_STORAGE_BUCKET",
+  messagingSenderId: "WHATSAPP_REMIX_FIREBASE_MESSAGING_SENDER_ID",
+  appId: "WHATSAPP_REMIX_FIREBASE_APP_ID",
+};
+```
+
 ### Create .env.local
+
+1. **Change Directory** into whatsapp-remix
+2. **Create** .env.local
+
+```bash
+WHATSAPP_REMIX_FIREBASE_API_KEY={WHATSAPP_REMIX_FIREBASE_API_KEY}
+WHATSAPP_REMIX_FIREBASE_AUTH_DOMAIN={WHATSAPP_REMIX_FIREBASE_AUTH_DOMAIN}
+WHATSAPP_REMIX_FIREBASE_PROJECT_ID={WHATSAPP_REMIX_FIREBASE_PROJECT_ID}
+WHATSAPP_REMIX_FIREBASE_STORAGE_BUCKET={WHATSAPP_REMIX_FIREBASE_STORAGE_BUCKET}
+WHATSAPP_REMIX_FIREBASE_MESSAGING_SENDER_ID={WHATSAPP_REMIX_FIREBASE_MESSAGING_SENDER_ID}
+WHATSAPP_REMIX_FIREBASE_APP_ID={WHATSAPP_REMIX_FIREBASE_APP_ID}
+```
+
 ### NPM Install
 
 ```js
