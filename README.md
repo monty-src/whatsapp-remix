@@ -1,3 +1,5 @@
+[![Deploy Next.js site to Pages](https://github.com/monty-src/whatsapp-remix/actions/workflows/nextjs.yml/badge.svg?branch=master)](https://github.com/monty-src/whatsapp-remix/actions/workflows/nextjs.yml)
+
 # WhatsApp Remix
 
 ## Table of Contents
