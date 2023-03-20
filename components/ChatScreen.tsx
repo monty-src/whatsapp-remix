@@ -4,10 +4,7 @@
  *
  * @author montier.elliott@gmail.com
  */
-import type { MouseEvent } from "react";
 import { useRouter } from "next/router";
-import { useAuthState } from "react-firebase-hooks/auth";
-
 import TimeAgo from "timeago-react";
 import styled from "styled-components";
 import { IconButton, Avatar } from "@mui/material";
@@ -15,18 +12,23 @@ import { InsertEmoticon } from "@mui/icons-material";
 import MoreVertIcon from "@mui/icons-material/MoreVertSharp";
 import AttachFileIcon from "@mui/icons-material/AttachFileRounded";
 
-import { auth } from "../firebase";
 import type { Chat } from "../types/chat";
 import { useFetchMessages } from "../hooks/useFetchMessages";
 
 import MessageBubble from "./MessageBubble";
 
+/**
+ * Props
+ *
+ *
+ * @interface
+ */
 interface Props {
   chat: Chat;
 }
 
 /**
- * Chat Screen
+ * Chat Screen component
  *
  *
  * @component
@@ -104,28 +106,30 @@ const ChatScreen = ({ chat }: Props): JSX.Element => {
 const Container = styled.div``;
 
 const Header = styled.div`
-  position: sticky;
-  background-color: white;
-  z-index: 100;
   top: 0;
+  z-index: 100;
+  position: sticky;
   display: flex;
+  align-items: center;
   padding: 11px;
   height: 80px;
-  align-items: center;
-  border-bottom: 1px solid whitesmoke;
+  background-color: #fff;
+  border-bottom: 1px solid #f5f5f5;
 `;
 
 const HeaderInformation = styled.div`
-  margin-left: 15px;
   flex: 1;
+  margin-left: 15px;
 
   > h3 {
+    margin-top: 0;
     margin-bottom: 3px;
   }
 
   > p {
+    margin: 0;
     font-size: 14px;
-    color: gray;
+    color: #808080;
   }
 `;
 
@@ -133,31 +137,34 @@ const HeaderIcons = styled.div``;
 
 const MessageContainer = styled.div`
   padding: 30px;
-  background-color: #e5ded8;
   min-height: 90vh;
+  background-color: #e5ded8;
 `;
 
 const EndOfMessage = styled.div``;
 
 const Input = styled.input`
   flex: 1;
-  outline: 0;
-  border: none;
-  border-radius: 10px;
-  background-color: whitesmoke;
   padding: 20px;
   margin-left: 15px;
   margin-right: 15px;
+
+  outline: 0;
+  border: none;
+  border-radius: 10px;
+  background-color: #f5f5f5;
 `;
 
 const InputContainer = styled.form`
+  bottom: 0;
+  z-index: 100;
+  position: sticky;
+
   display: flex;
   align-items: center;
+
   padding: 10px;
-  position: sticky;
-  bottom: 0;
-  background-color: white;
-  z-index: 100;
+  background-color: #fff;
 `;
 
 /** exporting */

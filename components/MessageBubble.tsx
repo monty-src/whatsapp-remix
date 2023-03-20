@@ -1,5 +1,5 @@
 /**
- * @module components/Message
+ * @module components/MessageBubble
  *
  *
  * @author montier.elliott@gmail.com
@@ -26,7 +26,7 @@ interface Props {
 }
 
 /**
- * Message Bubble
+ * Message Bubble component
  *
  *
  * @component
@@ -52,13 +52,16 @@ const MessageBubble = ({ message }: Props): JSX.Element => {
 const Container = styled.div``;
 
 const MessageElement = styled.p`
-  width: fit-content;
-  padding: 15px;
-  border-radius: 8px;
-  margin: 10px;
-  min-width: 60px;
-  padding-bottom: 26px;
   position: relative;
+
+  margin: 10px;
+  padding: 15px;
+  padding-bottom: 26px;
+
+  min-width: 60px;
+  width: fit-content;
+  border-radius: 8px;
+
   text-align: right;
 `;
 
@@ -68,7 +71,7 @@ const Sender = styled(MessageElement)`
 `;
 
 const Reciever = styled(MessageElement)`
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
   text-align: left;
 `;
 

@@ -1,5 +1,5 @@
 /**
- * @module components/Chat
+ * @module components/ChatRecipients
  *
  *
  * @author montier.elliott@gmail.com
@@ -7,13 +7,14 @@
 import styled from "styled-components";
 import { Avatar } from "@mui/material";
 
-import { useFetchRecipients } from "../hooks/useFetchRecipients";
-
 import type { Chat } from "../types/chat";
 import type { RecipientDocument } from "../types/user";
 
+import { useFetchRecipients } from "../hooks/useFetchRecipients";
+
+
 /**
- * Chat Recipients
+ * Chat Recipients component
  *
  *
  * @component

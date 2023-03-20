@@ -6,7 +6,6 @@
  */
 import Head from "next/head";
 import { useRouter } from "next/router";
-
 import styled from "styled-components";
 
 import { useFetchChat } from "../../hooks/useFetchChat";
@@ -15,16 +14,15 @@ import Sidebar from "../../components/Sidebar";
 import ChatScreen from "../../components/ChatScreen";
 
 /**
- * Chat
+ * chat/[id] Component
  *
  *
+ * @component
  * @returns {JSX.Element}
  */
 const Chat = (): JSX.Element => {
   const router = useRouter();
-  const { chat, messages, recipientEmail } = useFetchChat(
-    router?.query?.id as string
-  );
+  const { chat, recipientEmail } = useFetchChat(router?.query?.id as string);
 
   return (
     <Container>

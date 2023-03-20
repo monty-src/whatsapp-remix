@@ -12,6 +12,7 @@ import Sidebar from "../components/Sidebar";
  * Home Component
  *
  *
+ * @component
  * @returns {JSX.Element}
  */
 export default function Home(): JSX.Element {

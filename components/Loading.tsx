@@ -1,5 +1,5 @@
 /**
- * @module components/Sidebar
+ * @module components/Loading
  *
  *
  * @author montier.elliott@gmail.com
@@ -11,7 +11,7 @@ import { PropagateLoader } from "react-spinners";
 import Logo from "../public/logo.png";
 
 /**
- * Loading
+ * Loading component
  * 
  * 
  * @component
