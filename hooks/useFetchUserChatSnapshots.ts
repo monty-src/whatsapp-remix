@@ -1,5 +1,5 @@
 /**
- * @module hooks/useFetchUserChats
+ * @module hooks/useFetchUserChatSnapshots
  *
  *
  * @author montier.elliott@gmail.com
@@ -22,7 +22,7 @@ import type { ChatSnapshots } from "../types/chat";
  * @function
  * @returns {ChatSnapshots}
  */
-export const useFetchUserChats = (): ChatSnapshots => {
+export const useFetchUserChatSnapshots = (): ChatSnapshots => {
   const [user] = useAuthState(auth);
   const chatsCollection = collection(db, "chats");
   const userChatRef = query(

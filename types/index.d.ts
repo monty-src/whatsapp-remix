@@ -1,3 +1,9 @@
+/**
+ * @module types/index.d
+ *
+ *
+ * @author montier.elliott@gmail.com
+ */
 declare global {
   namespace JSX {
     interface IntrinsicElements {
