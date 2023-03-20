@@ -17,7 +17,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVertRounded";
 import { auth } from "../firebase";
 import { useFetchUserChatSnapshots } from "../hooks/useFetchUserChatSnapshots";
 
-import Chat from "./Chat";
+import ChatRecipients from "./ChatRecipients";
 
 /**
  * Sidebar component
@@ -71,7 +71,7 @@ const Sidebar = (): JSX.Element => {
       </Search>
       <SidebarButton onClick={handleCreate}>Start a new chat</SidebarButton>
       {chatsSnapshot?.docs.map((chat) => (
-        <Chat key={chat.id} id={chat.id} users={chat.data().users} />
+        <ChatRecipients key={chat.id} id={chat.id} users={chat.data().users} />
       ))}
     </Container>
   );

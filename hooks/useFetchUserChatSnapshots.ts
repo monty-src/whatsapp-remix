@@ -13,16 +13,16 @@ import { collection, query, where, addDoc } from "firebase/firestore";
 
 import { auth, db } from "../firebase";
 
-import type { ChatSnapshots } from "../types/chat";
+import type { Chats } from "../types/chat";
 
 /**
  * Use Fetch User Chats
  *
  *
  * @function
- * @returns {ChatSnapshots}
+ * @returns {Chats}
  */
-export const useFetchUserChatSnapshots = (): ChatSnapshots => {
+export const useFetchUserChatSnapshots = (): Chats => {
   const [user] = useAuthState(auth);
   const chatsCollection = collection(db, "chats");
   const userChatRef = query(

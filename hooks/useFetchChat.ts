@@ -16,9 +16,10 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth, db } from "../firebase";
-import { IChat, IMessage, ChatMessagesResponse } from "../types/chat";
-
 import getRecipientEmail from "../utils/getRecipientEmail";
+
+import type { Message } from "../types/messages";
+import type { Chat, ChatMessages } from "../types/chat";
 
 /**
  * Use Fetch Chat
@@ -26,13 +27,13 @@ import getRecipientEmail from "../utils/getRecipientEmail";
  *
  * @function
  * @param {string} chatId
- * @returns {ChatMessagesResponse}
+ * @returns {ChatMessages}
  */
-export const useFetchChat = (chatId: string): ChatMessagesResponse => {
+export const useFetchChat = (chatId: string): ChatMessages => {
   const [user] = useAuthState(auth);
-  const [chat, setChat] = useState<IChat | null>(null);
+  const [chat, setChat] = useState<Chat>({ id: "", users: [] });
   const [recipientEmail, setRecipientEmail] = useState<string>("");
-  const [messages, setMessages] = useState<IMessage[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const chatsRef = doc(db, `chats/${chatId}`);
   const messagesCollection = collection(db, `chats/${chatId}/messages`);
   const queryMessagesCollection = query(
@@ -51,7 +52,7 @@ export const useFetchChat = (chatId: string): ChatMessagesResponse => {
       }));
       setChat({
         id: chatResponse.id,
-        ...chatResponse.data(),
+        users: chatResponse.data()?.users,
       });
       setMessages(mappedMessages);
       setRecipientEmail(getRecipientEmail(chat?.users!, user));

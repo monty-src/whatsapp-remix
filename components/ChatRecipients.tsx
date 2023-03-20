@@ -8,17 +8,17 @@ import styled from "styled-components";
 import { Avatar } from "@mui/material";
 
 import { useFetchRecipients } from "../hooks/useFetchRecipients";
-import type { ChatDetails } from "../types/chat";
+import type { Chat } from "../types/chat";
 
 /**
- * Chat
+ * Chat Recipients
  *
  *
  * @component
  * @param {Props} props
  * @returns {JSX.Element}
  */
-const Chat = ({ id, users }: ChatDetails): JSX.Element => {
+const ChatRecipients = ({ id, users }: Chat): JSX.Element => {
   const { recipientSnapshot, enterChat } = useFetchRecipients({
     id,
     users,
@@ -61,4 +61,4 @@ const UserAvatar = styled(Avatar)`
 `;
 
 /** exporting */
-export default Chat;
+export default ChatRecipients;

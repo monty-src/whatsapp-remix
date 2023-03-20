@@ -4,14 +4,34 @@
  *
  * @author montier.elliott@gmail.com
  */
+import type { Recipient } from "./user";
 
-interface Message {}
+/**
+ * Message
+ *
+ *
+ * @interface
+ * @typedef {Message}
+ */
+export interface Message {
+  id: string;
+  input?: string;
+  timestamp: number | string;
+}
 
-interface Messages {
-  recipient: any;
-  recipientEmail: string | undefined;
-  messages: any;
-  input: string;
+/**
+ * Messages
+ *
+ *
+ * @interface
+ * @typedef {Messages}
+ */
+export interface Messages {
+  messages: Message[];
+
+  user: User;
+  recipient: Recipient;
+
   setInput: React.Dispatch<React.SetStateAction<string>>;
   sendMessage: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
 }

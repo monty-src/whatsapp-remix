@@ -4,7 +4,6 @@
  *
  * @author montier.elliott@gmail.com
  */
-import type { User } from "firebase/auth";
 import type {
   Query,
   QuerySnapshot,
@@ -12,84 +11,43 @@ import type {
   CollectionReference,
 } from "firebase/firestore";
 
-/**
- * User
- *
- * @typedef {User | null | undefined}
- */
-export type User = User | null | undefined;
+import type { AppUser } from "./user";
+import type { Message, Messages } from "./messages";
 
 /**
  * Chat
  *
  *
  * @interface
- * @typedef {Object} IChat
+ * @typedef {Chat}
  */
-export interface IChat {
-  id: string;
-  users?: string[];
-}
-
-/**
- * Signed In User Chats, user information, and how to create a new chat
- *
- *
- * @interface
- * @typedef {Object} ChatSnapshots
- */
-export interface ChatSnapshots {
-  user: user;
-  chatsSnapshot: QuerySnapshot<DocumentData> | undefined;
-  createChat: (input: string) => void;
-}
-
-/**
- * Chat Details
- *
- *
- * @interface
- * @typedef {ChatDetails}
- */
-export interface ChatDetails {
+export interface Chat {
   id: string;
   users: string[];
 }
 
 /**
- * Chat Recipients
+ * Chats
  *
  *
  * @interface
- * @typedef {ChatRecipients}
+ * @typedef {Chats}
  */
-export interface ChatRecipients {
-  recipientEmail: string | undefined;
-  recipientSnapshot: QuerySnapshot<DocumentData> | undefined;
-  enterChat: () => void;
+export interface Chats {
+  user: AppUser;
+  chatsSnapshot: QuerySnapshot<DocumentData> | undefined;
+  createChat: (input: string) => void;
 }
 
 /**
- * IMessage
- *
- *
- * @interface
- * @typedef {IMessage}
- */
-export interface IMessage {
-  id: string;
-  timestamp: number;
-}
-
-/**
- * Chat Messages Response
+ * Chat Messages
  * 
  * 
  * @interface
- * @typedef {ChatMessagesResponse}
+ * @typedef {ChatMessages}
  */
-export interface ChatMessagesResponse {
-  chat: IChat | null;
+export interface ChatMessages {
+  chat: Chat;
   messages: Message[];
   recipientEmail: string;
 }
