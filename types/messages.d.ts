@@ -5,6 +5,7 @@
  * @author montier.elliott@gmail.com
  */
 import type { Recipient } from "./user";
+import type { DocumentData, Timestamp } from "firebase/firestore";
 
 /**
  * Message
@@ -20,11 +21,26 @@ export interface Message {
 }
 
 /**
+ * Message Document
+ *
+ *
+ * @interface
+ * @typedef {MessageDocument}
+ */
+export interface MessageDocument extends DocumentData {
+  id: string;
+  user: string;
+
+  message: string;
+  photoURL: string;
+  timestamp: Timestamp;
+}
+
+/**
  * Messages
  *
  *
  * @interface
  * @typedef {Messages}
  */
-export interface Messages {
-}
+export interface Messages {}

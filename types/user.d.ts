@@ -5,7 +5,7 @@
  * @author montier.elliott@gmail.com
  */
 import type { User } from "firebase/auth";
-import type { DocumentData, QuerySnapshot } from "firebase/firestore";
+import type { DocumentData, QuerySnapshot, Timestamp } from "firebase/firestore";
 
 /**
  * User
@@ -27,10 +27,7 @@ export type AppUser = User | null | undefined;
 export interface RecipientDocument extends DocumentData {
   email: string;
   photoURL: string;
-  lastSeen: {
-    seconds: number;
-    nanoseconds: number;
-  };
+  lastSeen: Timestamp;
 }
 
 /**

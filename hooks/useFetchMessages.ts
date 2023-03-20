@@ -4,7 +4,7 @@
  *
  * @author montier.elliott@gmail.com
  */
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { useRouter } from "next/router";
 import {
   doc,
@@ -25,6 +25,7 @@ import { auth, db } from "../firebase";
 import getRecipientEmail from "../utils/getRecipientEmail";
 
 import type { RecipientDocument } from "../types/user";
+import { MessageDocument } from "../types/messages";
 
 interface ChatData {
   id: any;
@@ -41,10 +42,10 @@ interface MessageData {
 interface ChatHook {
   recipient: RecipientDocument;
   recipientEmail: string | undefined;
-  messages: any;
+  messages: MessageDocument[];
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
-  sendMessage: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  sendMessage: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
 }
 
 /**
@@ -76,7 +77,7 @@ export const useFetchMessages = ({ id, users }: ChatData): ChatHook => {
   const recipient = recipientSnapshot?.docs?.[0]?.data() as RecipientDocument;
   const recipientEmail = getRecipientEmail(users, user);
 
-  const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
+  const sendMessage = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     await setDoc(
       doc(db, `users/${user?.uid}`),
@@ -97,7 +98,9 @@ export const useFetchMessages = ({ id, users }: ChatData): ChatHook => {
   };
 
   const messages =
-    messagesSnapshot?.docs?.map((doc) => ({ id: doc.id, ...doc.data() })) ?? [];
+    messagesSnapshot?.docs?.map(
+      (doc) => ({ id: doc.id, ...doc.data() } as MessageDocument)
+    ) ?? [];
 
   return {
     recipient,
