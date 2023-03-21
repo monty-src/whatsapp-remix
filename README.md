@@ -2,6 +2,8 @@
 
 # WhatsApp Remix
 
+**Demo** https://monty-src.github.io/whatsapp-remix
+
 ![Whatsapp overview](./static/whatsapp.png)
 
 ## Table of Contents
@@ -13,7 +15,6 @@
 
 ## Overview
 
-**Demo** https://monty-src.github.io/whatsapp-remix
 
 This repository is part of the monty-src/remix series, and contains a WhatsApp clone built using Typescript, NextJS, Styled Components and Firebase.
 
