@@ -2,6 +2,8 @@
 
 # WhatsApp Remix
 
+![Whatsapp overview](./static/whatsapp.png)
+
 ## Table of Contents
 
 - [Overview](#overview)
